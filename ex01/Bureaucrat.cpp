@@ -6,11 +6,12 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:28:19 by aszamora          #+#    #+#             */
-/*   Updated: 2025/05/27 13:13:49 by aszamora         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:38:27 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
