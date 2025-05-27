@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:28:19 by aszamora          #+#    #+#             */
-/*   Updated: 2025/05/27 13:38:27 by aszamora         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:46:19 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,6 @@ void Bureaucrat::decrementGrade()
     std::cout << "Bureaucrat " << name << "has been promoted to grade" << grade << std::endl;
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
-{
-    os << b.getName() << ", bureaucrat grade " << b.getGrade();
-    return os;
-}
-
 Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name), grade(other.grade)
 {
 	if (grade < 1)
@@ -96,7 +90,7 @@ void Bureaucrat::signForm(Form& form)
     }
 }
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) 
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b)
 {
     os << b.getName() << ", bureaucrat grade " << b.getGrade() << " " ;
     return os;
