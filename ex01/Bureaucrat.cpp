@@ -6,7 +6,7 @@
 /*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:28:19 by aszamora          #+#    #+#             */
-/*   Updated: 2025/05/20 11:47:51 by aszamora         ###   ########.fr       */
+/*   Updated: 2025/05/27 13:13:49 by aszamora         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,23 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 		return *this;
 	grade = other.grade;
 	return *this;
+}
+
+void Bureaucrat::signForm(Form& form) 
+{
+    try 
+    {
+        form.beSigned(*this);
+        std::cout << name << " signed " << form.getName() << std::endl;
+    } 
+    catch (std::exception& e) 
+    {
+        std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) 
+{
+    os << b.getName() << ", bureaucrat grade " << b.getGrade() << " " ;
+    return os;
 }
