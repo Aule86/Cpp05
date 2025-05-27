@@ -3,23 +3,34 @@
 
 int main()
 {
-    Bureaucrat  sebas("sebas", 44);
-    Bureaucrat  paco("sebas", 70);
-    Form        a32("a32", 60, 15);
-    std::cout << sebas << std::endl;
-    std::cout << paco << std::endl;
-    std::cout << a32 << std::endl;
-    try
-    {
-        Form    a34("a34", 75, 25);
-        a32.beSigned(paco);
-        a34.beSigned(paco);
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    sebas.signForm(a32);
-    return 0;
 
+    try {
+        Bureaucrat David("David", 10);
+        Form form("sheet", 10, 5);
+        std::cout << std::boolalpha << form << "\n";
+
+        try {
+            form.beSigned(David);
+            std::cout << David;
+            David.signForm(form);
+            std::cout << "\n" << form;
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+        
+        // Añadir un burócrata que no pueda firmar el formulario
+        Bureaucrat John("John", 11); // John tiene un grado demasiado bajo para firmar el formulario
+
+        try {
+            John.signForm(form);
+            form.beSigned(John);
+            std::cout << "\n" << form;
+        } catch (std::exception &e) {
+            std::cout << e.what() << std::endl;
+        }
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    return 0;
 }
