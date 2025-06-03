@@ -1,12 +1,17 @@
 NAME = Bureaucrat
 
-CC = c++
+#CC = c++
+CC = clang++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98 -I./
 
 SRCS =	main.cpp \
 		Bureaucrat.cpp \
-		Form.cpp \
+		AForm.cpp \
+		PresidentialPardonForm.cpp \
+		RobotomyRequestForm.cpp \
+		ShrubberyCreationForm.cpp \
+
 		
 
 OBJS = $(SRCS:.cpp=.o)

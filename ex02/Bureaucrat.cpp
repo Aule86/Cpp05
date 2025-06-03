@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aszamora <aszamora@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aule86 <aule86@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:28:19 by aszamora          #+#    #+#             */
-/*   Updated: 2025/05/27 13:46:19 by aszamora         ###   ########.fr       */
+/*   Updated: 2025/06/03 13:10:39 by aule86           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -77,7 +77,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 	return *this;
 }
 
-void Bureaucrat::signForm(Form& form) 
+void Bureaucrat::signForm(AForm& form) 
 {
     try 
     {
@@ -87,6 +87,18 @@ void Bureaucrat::signForm(Form& form)
     catch (std::exception& e) 
     {
         std::cout << name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void    Bureaucrat::executeForm( AForm const &form )
+{
+    if (this->getGrade() <= form.getGradeToExecute() && form.getIsSigned()) {
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+        form.execute(*this);
+    }
+    else {
+        std::cout << this->getName() << " couldn’t execute " << form.getName() << " because ";
+        throw Bureaucrat::GradeTooLowException();
     }
 }
 
